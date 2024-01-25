@@ -16,8 +16,12 @@ export default function DeliveryPrice({ value, distance, items, time }) {
   }
 
   // determine fee for number of items
+  let itemCost = 0;
 
-  const totalFee = valueCost + distanceCost;
+  if (items > 4) {
+    const additionalItems = items - 4;
+    itemCost += additionalItems * 0.5;
+  }
 
   // determine fee for time of delivery
   const deliveryTime = new Date(time);
@@ -28,13 +32,13 @@ export default function DeliveryPrice({ value, distance, items, time }) {
   let timeCost = 0;
 
   if (isFriday && isBetween3to7PM) {
-    timeCost = totalFee * 0.2; // Multiply totalFee by 1.2
+    timeCost = (valueCost + distanceCost) * 0.2; // Multiply totalFee by 1.2
   }
 
-  const totalFeeWithTime = totalFee + timeCost;
+  const totalFee = valueCost + distanceCost + itemCost + timeCost;
 
   console.log(isBetween3to7PM);
   console.log(deliveryTime);
 
-  return <p>Delivery Price: {totalFeeWithTime}</p>;
+  return <p>Delivery Price: {totalFee}</p>;
 }
