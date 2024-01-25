@@ -1,6 +1,6 @@
-export default function DeliveryFeeForm({ onValue }) {
+export default function DeliveryFeeForm({ onFormInput }) {
   return (
-    <form onSubmit={onValue}>
+    <form onSubmit={onFormInput}>
       <label htmlFor="value-input">Cart Value</label>
       <input type="number" id="value-input" name="value" />
       <label htmlFor="distance-input">Delivery distance</label>

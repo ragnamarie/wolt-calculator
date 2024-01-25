@@ -1,3 +1,4 @@
 export default function DeliveryPrice({ value }) {
-  return <p>Delivery Price: {value} </p>;
+  const finalValue = value < 10 ? 10 : value;
+  return <p>Delivery Price: {finalValue} </p>;
 }
