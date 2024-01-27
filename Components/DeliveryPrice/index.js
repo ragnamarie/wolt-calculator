@@ -36,7 +36,7 @@ export default function DeliveryPrice({ value, distance, items, time }) {
   let timeCost = 0;
 
   if (isFriday && isBetween3to7PM) {
-    timeCost = (valueCost + distanceCost) * 0.2; // Multiply totalFee by 1.2
+    timeCost = (valueCost + distanceCost + itemCost) * 0.2; // Multiply totalFee by 1.2
   }
 
   // determine total fee

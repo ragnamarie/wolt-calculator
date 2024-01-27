@@ -1,5 +1,6 @@
 import DeliveryFeeForm from "../Components/DeliveryFeeForm";
 import DeliveryPrice from "../Components/DeliveryPrice";
+import Layout from "../Components/Layout";
 import { useState } from "react";
 
 export default function CheckOutPage() {
@@ -29,8 +30,7 @@ export default function CheckOutPage() {
   console.log(time);
 
   return (
-    <>
-      <h1>DELIVERY FEE CALCULATOR</h1>
+    <Layout>
       <DeliveryFeeForm onFormInput={handleFormInput} />
       <DeliveryPrice
         value={value}
@@ -38,6 +38,6 @@ export default function CheckOutPage() {
         items={items}
         time={time}
       />
-    </>
+    </Layout>
   );
 }
