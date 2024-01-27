@@ -32,7 +32,12 @@ export default function CheckOutPage() {
     <>
       <h1>DELIVERY FEE CALCULATOR</h1>
       <DeliveryFeeForm onFormInput={handleFormInput} />
-      <DeliveryPrice value={value} distance={distance} items={items} time={time}/>
+      <DeliveryPrice
+        value={value}
+        distance={distance}
+        items={items}
+        time={time}
+      />
     </>
   );
 }
