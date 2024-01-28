@@ -1,3 +1,5 @@
+import styled from "styled-components";
+
 export default function DeliveryPrice({ value, distance, items, time }) {
   // determine fee for order value
   const valueCost = value < 10 ? 10 - value : 0;
@@ -52,5 +54,5 @@ export default function DeliveryPrice({ value, distance, items, time }) {
   console.log(isBetween3to7PM);
   console.log(deliveryTime);
 
-  return <p>Delivery Price: {totalFee * factor}</p>;
+  return <p>Delivery Price: {totalFee * factor} Euro</p>;
 }
