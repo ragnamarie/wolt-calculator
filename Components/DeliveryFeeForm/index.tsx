@@ -1,14 +1,15 @@
+import React, { FC, FormEvent } from "react";
 import styled from "styled-components";
 
-export const StyledForm = styled.form`
+const StyledForm = styled.form`
   display: grid;
 `;
 
-export const StyledLabel = styled.label`
+const StyledLabel = styled.label`
   margin-bottom: 5px;
 `;
 
-export const StyledInput = styled.input`
+const StyledInput = styled.input`
   font-family: Helvetica, Arial, sans-serif;
   font-size: 14px;
   padding: 5px;
@@ -16,7 +17,7 @@ export const StyledInput = styled.input`
   border: none;
 `;
 
-export const StyledButton = styled.button`
+const StyledButton = styled.button`
   background-color: white;
   font-family: Helvetica, Arial, sans-serif;
   font-size: 14px;
@@ -32,14 +33,31 @@ export const StyledButton = styled.button`
   box-shadow: 4px 4px black;
 `;
 
-export default function DeliveryFeeForm({ onFormInput }) {
+interface DeliveryFeeFormProps {
+  onFormInput: (event: FormEvent<HTMLFormElement>) => void;
+}
+
+export default function DeliveryFeeForm({
+  onFormInput,
+}: DeliveryFeeFormProps): JSX.Element {
   return (
     <StyledForm onSubmit={onFormInput}>
       <StyledLabel htmlFor="value-input">Cart Value</StyledLabel>
-      <StyledInput type="number" id="value-input" name="value" required />
+      <div>
+        <StyledInput type="number" id="value-input" name="value" required />
+        <span>Euro</span>
+      </div>
 
       <StyledLabel htmlFor="distance-input">Delivery distance</StyledLabel>
-      <StyledInput type="number" id="distance-input" name="distance" required />
+      <div>
+        <StyledInput
+          type="number"
+          id="distance-input"
+          name="distance"
+          required
+        />
+        <span>m</span>
+      </div>
 
       <StyledLabel htmlFor="items-input">Amount of Items</StyledLabel>
       <StyledInput type="number" id="items-input" name="items" required />
