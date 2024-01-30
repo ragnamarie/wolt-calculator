@@ -1,5 +1,3 @@
-import React, { FC } from "react";
-
 interface DeliveryPriceProps {
   value: number | null;
   distance: number | null;
@@ -70,5 +68,5 @@ export default function DeliveryPrice({
   console.log(isBetween3to7PM);
   console.log(deliveryTime);
 
-  return <p>Delivery Price: {totalFee * factor} Euro</p>;
+  return <p data-test-id="fee">Delivery Price: {totalFee * factor} Euro</p>;
 }
