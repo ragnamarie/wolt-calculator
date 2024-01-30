@@ -42,7 +42,12 @@ export default function DeliveryFeeForm({
 }: DeliveryFeeFormProps): JSX.Element {
   // initialize variables in order to set current day and time as datetime default value
   const currentDate = new Date();
+  const offsetMinutes = currentDate.getTimezoneOffset();
+  currentDate.setMinutes(currentDate.getMinutes() - offsetMinutes);
+
   const currentDateTime = currentDate.toISOString().slice(0, 16);
+
+  console.log(currentDateTime);
 
   return (
     <StyledForm onSubmit={onFormInput}>
@@ -56,7 +61,7 @@ export default function DeliveryFeeForm({
           data-test-id="value"
           placeholder="0.00"
           pattern="[0-9]*\.?[0-9]*"
-          title="Please enter numbers and a decimal point only"
+          title="Please enter the cart value using only numbers and if necessary a decimal point"
           required
         />
         <span> Euro</span>
@@ -71,6 +76,7 @@ export default function DeliveryFeeForm({
           name="distance"
           data-test-id="distance"
           placeholder="0"
+          title="Please enter the distance in meters using whole numbers only"
           required
         />
         <span> m</span>
@@ -84,6 +90,7 @@ export default function DeliveryFeeForm({
         name="items"
         data-test-id="items"
         placeholder="0"
+        title="Please enter the amount of items using whole numbers only"
         required
       />
 
@@ -94,6 +101,7 @@ export default function DeliveryFeeForm({
         name="time"
         data-test-id="time"
         defaultValue={currentDateTime}
+        title="Please set date and time of the order"
         required
       />
 
