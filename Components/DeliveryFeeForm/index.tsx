@@ -1,4 +1,4 @@
-import React, { FC, FormEvent } from "react";
+import React, { FormEvent } from "react";
 import styled from "styled-components";
 
 const StyledForm = styled.form`
@@ -40,33 +40,58 @@ interface DeliveryFeeFormProps {
 export default function DeliveryFeeForm({
   onFormInput,
 }: DeliveryFeeFormProps): JSX.Element {
+  // initialize variables in order to set current day and time as datetime default value
+  const currentDate = new Date();
+  const currentDateTime = currentDate.toISOString().slice(0, 16);
+
   return (
     <StyledForm onSubmit={onFormInput}>
       <StyledLabel htmlFor="value-input">Cart Value</StyledLabel>
       <div>
-        <StyledInput type="number" id="value-input" name="value" required />
-        <span>Euro</span>
+        <StyledInput
+          type="text"
+          min="0.00"
+          id="value-input"
+          name="value"
+          data-test-id="value"
+          placeholder="0.00"
+          required
+        />
+        <span> Euro</span>
       </div>
 
       <StyledLabel htmlFor="distance-input">Delivery distance</StyledLabel>
       <div>
         <StyledInput
           type="number"
+          min="0"
           id="distance-input"
           name="distance"
+          data-test-id="distance"
+          placeholder="0"
           required
         />
-        <span>m</span>
+        <span> m</span>
       </div>
 
       <StyledLabel htmlFor="items-input">Amount of Items</StyledLabel>
-      <StyledInput type="number" id="items-input" name="items" required />
+      <StyledInput
+        type="number"
+        min="1"
+        id="items-input"
+        name="items"
+        data-test-id="items"
+        placeholder="0"
+        required
+      />
 
       <StyledLabel htmlFor="datetime-input">Date and Time</StyledLabel>
       <StyledInput
         type="datetime-local"
         id="datetime-input"
         name="time"
+        data-test-id="time"
+        defaultValue={currentDateTime}
         required
       />
 
