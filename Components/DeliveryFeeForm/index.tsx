@@ -55,6 +55,8 @@ export default function DeliveryFeeForm({
           name="value"
           data-test-id="value"
           placeholder="0.00"
+          pattern="[0-9]*\.?[0-9]*"
+          title="Please enter numbers and a decimal point only"
           required
         />
         <span> Euro</span>
