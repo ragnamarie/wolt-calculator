@@ -45,9 +45,9 @@ export default function DeliveryPrice({
 
   // determine fee for time of delivery
   const deliveryTime: Date = new Date(time);
-  const isFriday: boolean = deliveryTime.getUTCDay() === 5; // 5 corresponds to Friday
+  const isFriday: boolean = deliveryTime.getDay() === 5; // 5 corresponds to Friday
   const isBetween3to7PM: boolean =
-    deliveryTime.getUTCHours() >= 15 && deliveryTime.getUTCHours() < 19;
+    deliveryTime.getHours() >= 15 && deliveryTime.getHours() < 19;
 
   let timeCost: number = 0;
 
@@ -68,5 +68,9 @@ export default function DeliveryPrice({
   console.log(isBetween3to7PM);
   console.log(deliveryTime);
 
-  return <p data-test-id="fee">Delivery Price: {totalFee * factor} Euro</p>;
+  return (
+    <p data-test-id="fee" role="status" aria-live="polite">
+      Delivery Price: {totalFee * factor} Euro
+    </p>
+  );
 }

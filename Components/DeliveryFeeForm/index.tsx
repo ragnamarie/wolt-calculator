@@ -42,11 +42,16 @@ export default function DeliveryFeeForm({
 }: DeliveryFeeFormProps): JSX.Element {
   // initialize variables in order to set current day and time as datetime default value
   const currentDate = new Date();
+  const offsetMinutes = currentDate.getTimezoneOffset();
+  currentDate.setMinutes(currentDate.getMinutes() - offsetMinutes);
+
   const currentDateTime = currentDate.toISOString().slice(0, 16);
 
   return (
-    <StyledForm onSubmit={onFormInput}>
-      <StyledLabel htmlFor="value-input">Cart Value</StyledLabel>
+    <StyledForm onSubmit={onFormInput} aria-labelledby="form-title">
+      <StyledLabel htmlFor="value-input" id="value-label">
+        Cart Value
+      </StyledLabel>
       <div>
         <StyledInput
           type="text"
@@ -56,13 +61,15 @@ export default function DeliveryFeeForm({
           data-test-id="value"
           placeholder="0.00"
           pattern="[0-9]*\.?[0-9]*"
-          title="Please enter numbers and a decimal point only"
+          title="Please enter the cart value using only numbers and if necessary a decimal point"
           required
         />
         <span> Euro</span>
       </div>
 
-      <StyledLabel htmlFor="distance-input">Delivery distance</StyledLabel>
+      <StyledLabel htmlFor="distance-input" id="distance-label">
+        Delivery distance
+      </StyledLabel>
       <div>
         <StyledInput
           type="number"
@@ -71,12 +78,15 @@ export default function DeliveryFeeForm({
           name="distance"
           data-test-id="distance"
           placeholder="0"
+          title="Please enter the distance in meters using whole numbers only"
           required
         />
         <span> m</span>
       </div>
 
-      <StyledLabel htmlFor="items-input">Amount of Items</StyledLabel>
+      <StyledLabel htmlFor="items-input" id="items-label">
+        Amount of Items
+      </StyledLabel>
       <StyledInput
         type="number"
         min="1"
@@ -84,20 +94,26 @@ export default function DeliveryFeeForm({
         name="items"
         data-test-id="items"
         placeholder="0"
+        title="Please enter the amount of items using whole numbers only"
         required
       />
 
-      <StyledLabel htmlFor="datetime-input">Date and Time</StyledLabel>
+      <StyledLabel htmlFor="datetime-input" id="datetime-label">
+        Date and Time
+      </StyledLabel>
       <StyledInput
         type="datetime-local"
         id="datetime-input"
         name="time"
         data-test-id="time"
         defaultValue={currentDateTime}
+        title="Please set date and time of the order"
         required
       />
 
-      <StyledButton type="submit">Calculate Delivery Price</StyledButton>
+      <StyledButton type="submit" aria-label="Calculate Delivery Price">
+        Calculate Delivery Price
+      </StyledButton>
     </StyledForm>
   );
 }
