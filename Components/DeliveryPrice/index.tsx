@@ -24,7 +24,7 @@ export default function DeliveryPrice({
   if (distance > 1000) {
     const additionalDistance: number = (distance - 1000) / 500; // Calculate additional cost for every 500 units beyond 1000
 
-    // Check if there's a remainder after dividing by 500
+    // check if there's a remainder after dividing by 500
     distanceCost +=
       additionalDistance % 1 === 0
         ? additionalDistance
@@ -65,12 +65,9 @@ export default function DeliveryPrice({
   // factor so that the total fee can be set to 0 if the cart value is equal or more than 200
   const factor: number = value < 200 ? 1 : 0;
 
-  console.log(isBetween3to7PM);
-  console.log(deliveryTime);
-
   return (
     <p data-test-id="fee" role="status" aria-live="polite">
-      Delivery Price: {totalFee * factor} Euro
+      Delivery Price: {(totalFee * factor).toFixed(2)} Euro
     </p>
   );
 }
