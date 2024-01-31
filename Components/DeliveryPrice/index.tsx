@@ -68,5 +68,9 @@ export default function DeliveryPrice({
   console.log(isBetween3to7PM);
   console.log(deliveryTime);
 
-  return <p data-test-id="fee">Delivery Price: {totalFee * factor} Euro</p>;
+  return (
+    <p data-test-id="fee" role="status" aria-live="polite">
+      Delivery Price: {totalFee * factor} Euro
+    </p>
+  );
 }

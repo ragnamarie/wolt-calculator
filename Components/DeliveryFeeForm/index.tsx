@@ -47,11 +47,11 @@ export default function DeliveryFeeForm({
 
   const currentDateTime = currentDate.toISOString().slice(0, 16);
 
-  console.log(currentDateTime);
-
   return (
-    <StyledForm onSubmit={onFormInput}>
-      <StyledLabel htmlFor="value-input">Cart Value</StyledLabel>
+    <StyledForm onSubmit={onFormInput} aria-labelledby="form-title">
+      <StyledLabel htmlFor="value-input" id="value-label">
+        Cart Value
+      </StyledLabel>
       <div>
         <StyledInput
           type="text"
@@ -67,7 +67,9 @@ export default function DeliveryFeeForm({
         <span> Euro</span>
       </div>
 
-      <StyledLabel htmlFor="distance-input">Delivery distance</StyledLabel>
+      <StyledLabel htmlFor="distance-input" id="distance-label">
+        Delivery distance
+      </StyledLabel>
       <div>
         <StyledInput
           type="number"
@@ -82,7 +84,9 @@ export default function DeliveryFeeForm({
         <span> m</span>
       </div>
 
-      <StyledLabel htmlFor="items-input">Amount of Items</StyledLabel>
+      <StyledLabel htmlFor="items-input" id="items-label">
+        Amount of Items
+      </StyledLabel>
       <StyledInput
         type="number"
         min="1"
@@ -94,7 +98,9 @@ export default function DeliveryFeeForm({
         required
       />
 
-      <StyledLabel htmlFor="datetime-input">Date and Time</StyledLabel>
+      <StyledLabel htmlFor="datetime-input" id="datetime-label">
+        Date and Time
+      </StyledLabel>
       <StyledInput
         type="datetime-local"
         id="datetime-input"
@@ -105,7 +111,9 @@ export default function DeliveryFeeForm({
         required
       />
 
-      <StyledButton type="submit">Calculate Delivery Price</StyledButton>
+      <StyledButton type="submit" aria-label="Calculate Delivery Price">
+        Calculate Delivery Price
+      </StyledButton>
     </StyledForm>
   );
 }
