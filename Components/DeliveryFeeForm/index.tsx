@@ -44,7 +44,6 @@ export default function DeliveryFeeForm({
   const currentDate = new Date();
   const offsetMinutes = currentDate.getTimezoneOffset();
   currentDate.setMinutes(currentDate.getMinutes() - offsetMinutes);
-
   const currentDateTime = currentDate.toISOString().slice(0, 16);
 
   return (

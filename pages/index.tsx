@@ -26,11 +26,6 @@ export default function CheckOutPage(props: CheckOutPageProps): JSX.Element {
     setTime(formTime);
   }
 
-  console.log(value);
-  console.log(distance);
-  console.log(items);
-  console.log(time);
-
   return (
     <Layout>
       <DeliveryFeeForm onFormInput={handleFormInput} />
